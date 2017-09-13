@@ -8,7 +8,7 @@ git filter-branch --force --prune-empty --index-filter '
     # Delete files which are NOT needed
     git ls-files -z | grep -zvP "^(itl/|doc/.*template-library)" | xargs -0 -r git rm --cached -q
     # Move files to root directory
-    git ls-files -s | sed -e "s-\titl//-\t-" |
+    git ls-files -s | sed -e "s-\titl/-\t-" |
         GIT_INDEX_FILE=$GIT_INDEX_FILE.new \
         git update-index --index-info &&
         ( test ! -f "$GIT_INDEX_FILE.new" \

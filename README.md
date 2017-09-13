@@ -12,14 +12,18 @@ Please do not use this as of now. The README will be updated once we really migr
     cd icinga2/
     git checkout -b itl-split
 
+    # if necessary restart
+    git reset --hard origin/master
+
     ../git-itl-filter.sh
 
     git remote add itl git@github.com:Icinga/icinga-template-library.git
-    git push itl itl-split:icinga2-export
+    git push -fu itl itl-split:icinga2-export
 
+    # Merge into local repository
     cd ../
     git fetch origin
-    git merge origin/icinga2-export
+    git merge --allow-unrelated-histories origin/icinga2-export
 
 ## License
 
